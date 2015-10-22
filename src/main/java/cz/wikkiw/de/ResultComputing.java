@@ -14,6 +14,7 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -173,10 +174,10 @@ public class ResultComputing {
 //                System.out.println("SSpeed: " + list.get(1));
 //                System.out.println("SRate x SSpeed: " + list.get(2));
                 
-                writer.print("{" + list.get(3) + "," + list.get(4) + "," + list.get(0) + "}");
-                writer2.print("{" + list.get(3) + "," + list.get(4) + "," + list.get(1) + "}");
-                writer3.print("{" + list.get(3) + "," + list.get(4) + "," + list.get(2) + "}");
-
+                writer.print("{" + list.get(3) + "," + list.get(4) + "," + String.format(Locale.ENGLISH,"%.10f", list.get(0)) + "}");
+                writer2.print("{" + list.get(3) + "," + list.get(4) + "," + String.format(Locale.ENGLISH,"%.10f", list.get(1)) + "}");
+                writer3.print("{" + list.get(3) + "," + list.get(4) + "," + String.format(Locale.ENGLISH,"%.10f", list.get(2)) + "}");
+                
                 i++;
                 if(i != resList.size()){
                     writer.print(",");
@@ -217,7 +218,7 @@ public class ResultComputing {
        double Fstep = 0.1;
        int ffe = 10000*D - (D*1000);
        int runs = 30;
-
+       
       /**
         * ACKLEY
         */
