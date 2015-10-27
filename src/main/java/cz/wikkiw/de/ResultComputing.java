@@ -306,99 +306,107 @@ public class ResultComputing {
        
        double[] features = new double[]{-61.67713722207517, -7.684525402507525, 87.94238891851492, -43.54210399352583, -62.59488750718182, 97.35187950444471, 68.33052512544774, 10.072597485805419, 56.10503687634504, -69.18168336936716};
        FitnessFunction ff = new f1();
-       
+       ff.init(10);
        Individual ind = new Individual(features, ff.getValue(features));
        double ffo = ff.getOptimum(D);
        double fal = ff.getFal(ffe);
        Boundary boundary = ff.getBoundary();
-       ff.init(10);
+       
 
        ResultComputing.computeAndPrintOutCRFs("f1-10.txt", Fmin, Fmax, Fstep, CRmin, CRmax, CRstep, runs, ind, D, individuals, ffe, ff, boundary, ffo, fal);
 
        ff = new f2();
+       ff.init(10);
        features = new double[]{30.242517057909044, -1.3389157573791164, -56.56894237690362, -51.612955606876525, -65.49795547197891, 32.099286316992206, -78.97687612853157, -24.01676701354655, 31.99925853756012, -66.39076658797497};
        ind = new Individual(features, ff.getValue(features));
        ffo = ff.getOptimum(D);
        fal = ff.getFal(ffe);
        boundary = ff.getBoundary();
-       ff.init(10);
+       
 
 
        ResultComputing.computeAndPrintOutCRFs("f2-10.txt", Fmin, Fmax, Fstep, CRmin, CRmax, CRstep, runs, ind, D, individuals, ffe, ff, boundary, ffo, fal);
 
        ff = new f3();
+       ff.init(10);
        features = new double[]{16.97634799777022, -79.91198508875064, 77.46448004829409, -69.98104482717201, 38.832241590461976, 49.33910328927058, -56.1955407341447, 82.28484029053955, 28.972014372637858, -71.39437658402943};
        ind = new Individual(features, ff.getValue(features));
        ffo = ff.getOptimum(D);
        fal = ff.getFal(ffe);
        boundary = ff.getBoundary();
-       ff.init(10);
+       
 
 
        ResultComputing.computeAndPrintOutCRFs("f3-10.txt", Fmin, Fmax, Fstep, CRmin, CRmax, CRstep, runs, ind, D, individuals, ffe, ff, boundary, ffo, fal);
 
        ff = new f4();
+       ff.init(10);
        features = new double[]{-67.17314124444904, -74.46129984420489, 64.34085808167757, 19.101518666679958, -71.4711527299858, -27.872722203657002, -19.918644580712787, -93.15560189302548, 57.37753464939102, -17.390231995809927};
        ind = new Individual(features, ff.getValue(features));
        ffo = ff.getOptimum(D);
        fal = ff.getFal(ffe);
        boundary = ff.getBoundary();
-       ff.init(10);
+       
 
 
        ResultComputing.computeAndPrintOutCRFs("f4-10.txt", Fmin, Fmax, Fstep, CRmin, CRmax, CRstep, runs, ind, D, individuals, ffe, ff, boundary, ffo, fal);
 
        ff = new f5();
+       ff.init(10);
        features = new double[]{84.67672990931405, 99.70515918353644, 87.72518425320985, 50.834271573691, -78.97844159153891, -76.10989677290179, -74.8369493743183, -87.85813929850048, -19.49224669123444, -40.05280703218027};
        ind = new Individual(features, ff.getValue(features));
        ffo = ff.getOptimum(D);
        fal = ff.getFal(ffe);
        boundary = ff.getBoundary();
-       ff.init(10);
+       
 
 
        ResultComputing.computeAndPrintOutCRFs("f5-10.txt", Fmin, Fmax, Fstep, CRmin, CRmax, CRstep, runs, ind, D, individuals, ffe, ff, boundary, ffo, fal);
 
        ff = new f6();
+       ff.init(10);
        features = new double[]{58.282302024522366, -78.18623429848688, 50.62344648032797, -31.963671007618263, -19.965620163406683, 90.51439966215287, -84.1242843595067, -14.536617463729158, -34.44726047193677, 43.58958653028904};
        ind = new Individual(features, ff.getValue(features));
        ffo = ff.getOptimum(D);
        fal = ff.getFal(ffe);
        boundary = ff.getBoundary();
-              ff.init(10);
+              
 
 
        ResultComputing.computeAndPrintOutCRFs("f6-10.txt", Fmin, Fmax, Fstep, CRmin, CRmax, CRstep, runs, ind, D, individuals, ffe, ff, boundary, ffo, fal);
 
        ff = new f7();
+       ff.init(10);
        features = new double[]{84.42067428578207, 6.722682283600291, -55.7554231013217, -88.86633872895888, -48.90856352414863, 26.493222385702303, 75.37977814591991, -8.639679245359863, 42.46158305144891, 24.041721017120164};
        ind = new Individual(features, ff.getValue(features));
        ffo = ff.getOptimum(D);
        fal = ff.getFal(ffe);
        boundary = ff.getBoundary();
-              ff.init(10);
+              
 
 
        ResultComputing.computeAndPrintOutCRFs("f7-10.txt", Fmin, Fmax, Fstep, CRmin, CRmax, CRstep, runs, ind, D, individuals, ffe, ff, boundary, ffo, fal);
 
        ff = new f8();
+       ff.init(10);
        features = new double[]{-2.7338691359577165, 41.57948316148812, -58.28051737345582, 20.987861243193088, -27.222054581055744, 21.194215955134126, 80.71078317453772, 84.45418647945546, -67.4842976858072, 98.21715614406611};
        ind = new Individual(features, ff.getValue(features));
        ffo = ff.getOptimum(D);
        fal = ff.getFal(ffe);
        boundary = ff.getBoundary();
-              ff.init(10);
+              
 
 
        ResultComputing.computeAndPrintOutCRFs("f8-10.txt", Fmin, Fmax, Fstep, CRmin, CRmax, CRstep, runs, ind, D, individuals, ffe, ff, boundary, ffo, fal);
 
        ff = new f9();
+       ff.init(10);
+
        features = new double[]{0.4782650442298966, 12.975979346748927, 58.82646867563104, 78.5391436227055, -52.96940742517774, -16.760032807370834, -76.77139193164639, 82.24127616120154, 27.121561478262514, 57.99189301467895};
        ind = new Individual(features, ff.getValue(features));
        ffo = ff.getOptimum(D);
        fal = ff.getFal(ffe);
        boundary = ff.getBoundary();
-              ff.init(10);
 
 
        ResultComputing.computeAndPrintOutCRFs("f9-10.txt", Fmin, Fmax, Fstep, CRmin, CRmax, CRstep, runs, ind, D, individuals, ffe, ff, boundary, ffo, fal);
@@ -415,56 +423,61 @@ public class ResultComputing {
        ResultComputing.computeAndPrintOutCRFs("f10-10.txt", Fmin, Fmax, Fstep, CRmin, CRmax, CRstep, runs, ind, D, individuals, ffe, ff, boundary, ffo, fal);
 
        ff = new f11();
+       ff.init(10);
        features = new double[]{-40.87207736674745, -40.599215350188544, 21.823966855976884, 43.744092263714556, -55.63619526290841, 39.82879783957419, 58.31645314557919, 55.95886473070661, 41.25751810125345, 89.91656250744752};
        ind = new Individual(features, ff.getValue(features));
        ffo = ff.getOptimum(D);
        fal = ff.getFal(ffe);
        boundary = ff.getBoundary();
-              ff.init(10);
+              
 
 
        ResultComputing.computeAndPrintOutCRFs("f11-10.txt", Fmin, Fmax, Fstep, CRmin, CRmax, CRstep, runs, ind, D, individuals, ffe, ff, boundary, ffo, fal);
 
        ff = new f12();
+       ff.init(10);
        features = new double[]{28.165579395007562, -36.54945742929885, -71.87926409235058, -91.82252063014187, -48.987728633397694, 45.76207695815014, 84.34358466237327, 71.7686901301632, 63.53689402319647, -63.53200937483225};
        ind = new Individual(features, ff.getValue(features));
        ffo = ff.getOptimum(D);
        fal = ff.getFal(ffe);
        boundary = ff.getBoundary();
-              ff.init(10);
+              
 
 
        ResultComputing.computeAndPrintOutCRFs("f12-10.txt", Fmin, Fmax, Fstep, CRmin, CRmax, CRstep, runs, ind, D, individuals, ffe, ff, boundary, ffo, fal);
 
        ff = new f13();
+       ff.init(10);
        features = new double[]{-68.30284550568715, 53.01503195890277, -91.99282171378789, 22.181734974259275, -5.216706296044816, -85.27362718413828, -27.013312366849462, 86.11362910377457, -15.815110624444452, -89.73464089498802};
        ind = new Individual(features, ff.getValue(features));
        ffo = ff.getOptimum(D);
        fal = ff.getFal(ffe);
        boundary = ff.getBoundary();
-              ff.init(10);
+              
 
 
        ResultComputing.computeAndPrintOutCRFs("f13-10.txt", Fmin, Fmax, Fstep, CRmin, CRmax, CRstep, runs, ind, D, individuals, ffe, ff, boundary, ffo, fal);
 
        ff = new f14();
+       ff.init(10);
        features = new double[]{89.66417495880359, 63.93896320872217, -55.270087173605724, -11.054071512059764, 30.796973951805803, 57.68082654920511, -10.132342182297137, 27.64791928408402, 60.212967037720354, 73.74626604394287};
        ind = new Individual(features, ff.getValue(features));
        ffo = ff.getOptimum(D);
        fal = ff.getFal(ffe);
        boundary = ff.getBoundary();
-              ff.init(10);
+              
 
 
        ResultComputing.computeAndPrintOutCRFs("f14-10.txt", Fmin, Fmax, Fstep, CRmin, CRmax, CRstep, runs, ind, D, individuals, ffe, ff, boundary, ffo, fal);
 
        ff = new f15();
+       ff.init(10);
        features = new double[]{-60.15326099231142, 85.34846513468047, 37.934199578935036, 34.46935852302357, 1.49241393665908, 88.99525995083044, -66.99196837365398, -6.1609573822510155, 67.1540132271268, 6.633069290728301};
        ind = new Individual(features, ff.getValue(features));
        ffo = ff.getOptimum(D);
        fal = ff.getFal(ffe);
        boundary = ff.getBoundary();
-              ff.init(10);
+              
 
 
        ResultComputing.computeAndPrintOutCRFs("f15-10.txt", Fmin, Fmax, Fstep, CRmin, CRmax, CRstep, runs, ind, D, individuals, ffe, ff, boundary, ffo, fal);

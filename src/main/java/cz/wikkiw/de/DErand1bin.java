@@ -82,14 +82,14 @@ public class DErand1bin {
             if (this.isBestIndividual(ind)) {
 
                 if (this.successTask()) {
-                    System.out.println("Successful run.");
+//                    System.out.println("Successful run.");
                     return true;
                 }
 
             }
 
             if (this.evaluations == this.maxFFE) {
-                System.out.println("Unsuccessful run.");
+//                System.out.println("Unsuccessful run.");
                 return false;
             }
 
@@ -139,7 +139,7 @@ public class DErand1bin {
                     if (this.isBestIndividual(trial)) {
 
                         if (this.successTask()) {
-                            System.out.println("Successful run.");
+//                            System.out.println("Successful run.");
                             return true;
                         }
 
@@ -151,7 +151,7 @@ public class DErand1bin {
                 
 
                 if (this.evaluations == this.maxFFE) {
-                    System.out.println("Unsuccessful run.");
+//                    System.out.println("Unsuccessful run.");
                     return false;
                 }
                 
