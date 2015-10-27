@@ -302,12 +302,16 @@ public class ResultComputing {
 //       ResultComputing.computeAndPrintOutCRFs("quadric10.txt", Fmin, Fmax, Fstep, CRmin, CRmax, CRstep, runs, ind, D, individuals, ffe, ff, boundary, ffo, fal);
 //       
        
-       FitnessFunction ff = new f1();
+       
+       
        double[] features = new double[]{-61.67713722207517, -7.684525402507525, 87.94238891851492, -43.54210399352583, -62.59488750718182, 97.35187950444471, 68.33052512544774, 10.072597485805419, 56.10503687634504, -69.18168336936716};
+       FitnessFunction ff = new f1();
+       
        Individual ind = new Individual(features, ff.getValue(features));
        double ffo = ff.getOptimum(D);
        double fal = ff.getFal(ffe);
        Boundary boundary = ff.getBoundary();
+       ff.init(10);
 
        ResultComputing.computeAndPrintOutCRFs("f1-10.txt", Fmin, Fmax, Fstep, CRmin, CRmax, CRstep, runs, ind, D, individuals, ffe, ff, boundary, ffo, fal);
 
@@ -317,6 +321,8 @@ public class ResultComputing {
        ffo = ff.getOptimum(D);
        fal = ff.getFal(ffe);
        boundary = ff.getBoundary();
+       ff.init(10);
+
 
        ResultComputing.computeAndPrintOutCRFs("f2-10.txt", Fmin, Fmax, Fstep, CRmin, CRmax, CRstep, runs, ind, D, individuals, ffe, ff, boundary, ffo, fal);
 
@@ -326,6 +332,8 @@ public class ResultComputing {
        ffo = ff.getOptimum(D);
        fal = ff.getFal(ffe);
        boundary = ff.getBoundary();
+       ff.init(10);
+
 
        ResultComputing.computeAndPrintOutCRFs("f3-10.txt", Fmin, Fmax, Fstep, CRmin, CRmax, CRstep, runs, ind, D, individuals, ffe, ff, boundary, ffo, fal);
 
@@ -335,6 +343,8 @@ public class ResultComputing {
        ffo = ff.getOptimum(D);
        fal = ff.getFal(ffe);
        boundary = ff.getBoundary();
+       ff.init(10);
+
 
        ResultComputing.computeAndPrintOutCRFs("f4-10.txt", Fmin, Fmax, Fstep, CRmin, CRmax, CRstep, runs, ind, D, individuals, ffe, ff, boundary, ffo, fal);
 
@@ -344,6 +354,8 @@ public class ResultComputing {
        ffo = ff.getOptimum(D);
        fal = ff.getFal(ffe);
        boundary = ff.getBoundary();
+       ff.init(10);
+
 
        ResultComputing.computeAndPrintOutCRFs("f5-10.txt", Fmin, Fmax, Fstep, CRmin, CRmax, CRstep, runs, ind, D, individuals, ffe, ff, boundary, ffo, fal);
 
@@ -353,6 +365,8 @@ public class ResultComputing {
        ffo = ff.getOptimum(D);
        fal = ff.getFal(ffe);
        boundary = ff.getBoundary();
+              ff.init(10);
+
 
        ResultComputing.computeAndPrintOutCRFs("f6-10.txt", Fmin, Fmax, Fstep, CRmin, CRmax, CRstep, runs, ind, D, individuals, ffe, ff, boundary, ffo, fal);
 
@@ -362,6 +376,8 @@ public class ResultComputing {
        ffo = ff.getOptimum(D);
        fal = ff.getFal(ffe);
        boundary = ff.getBoundary();
+              ff.init(10);
+
 
        ResultComputing.computeAndPrintOutCRFs("f7-10.txt", Fmin, Fmax, Fstep, CRmin, CRmax, CRstep, runs, ind, D, individuals, ffe, ff, boundary, ffo, fal);
 
@@ -371,6 +387,8 @@ public class ResultComputing {
        ffo = ff.getOptimum(D);
        fal = ff.getFal(ffe);
        boundary = ff.getBoundary();
+              ff.init(10);
+
 
        ResultComputing.computeAndPrintOutCRFs("f8-10.txt", Fmin, Fmax, Fstep, CRmin, CRmax, CRstep, runs, ind, D, individuals, ffe, ff, boundary, ffo, fal);
 
@@ -380,6 +398,8 @@ public class ResultComputing {
        ffo = ff.getOptimum(D);
        fal = ff.getFal(ffe);
        boundary = ff.getBoundary();
+              ff.init(10);
+
 
        ResultComputing.computeAndPrintOutCRFs("f9-10.txt", Fmin, Fmax, Fstep, CRmin, CRmax, CRstep, runs, ind, D, individuals, ffe, ff, boundary, ffo, fal);
 
@@ -389,6 +409,8 @@ public class ResultComputing {
        ffo = ff.getOptimum(D);
        fal = ff.getFal(ffe);
        boundary = ff.getBoundary();
+              ff.init(10);
+
 
        ResultComputing.computeAndPrintOutCRFs("f10-10.txt", Fmin, Fmax, Fstep, CRmin, CRmax, CRstep, runs, ind, D, individuals, ffe, ff, boundary, ffo, fal);
 
@@ -398,6 +420,8 @@ public class ResultComputing {
        ffo = ff.getOptimum(D);
        fal = ff.getFal(ffe);
        boundary = ff.getBoundary();
+              ff.init(10);
+
 
        ResultComputing.computeAndPrintOutCRFs("f11-10.txt", Fmin, Fmax, Fstep, CRmin, CRmax, CRstep, runs, ind, D, individuals, ffe, ff, boundary, ffo, fal);
 
@@ -407,6 +431,8 @@ public class ResultComputing {
        ffo = ff.getOptimum(D);
        fal = ff.getFal(ffe);
        boundary = ff.getBoundary();
+              ff.init(10);
+
 
        ResultComputing.computeAndPrintOutCRFs("f12-10.txt", Fmin, Fmax, Fstep, CRmin, CRmax, CRstep, runs, ind, D, individuals, ffe, ff, boundary, ffo, fal);
 
@@ -416,6 +442,8 @@ public class ResultComputing {
        ffo = ff.getOptimum(D);
        fal = ff.getFal(ffe);
        boundary = ff.getBoundary();
+              ff.init(10);
+
 
        ResultComputing.computeAndPrintOutCRFs("f13-10.txt", Fmin, Fmax, Fstep, CRmin, CRmax, CRstep, runs, ind, D, individuals, ffe, ff, boundary, ffo, fal);
 
@@ -425,6 +453,8 @@ public class ResultComputing {
        ffo = ff.getOptimum(D);
        fal = ff.getFal(ffe);
        boundary = ff.getBoundary();
+              ff.init(10);
+
 
        ResultComputing.computeAndPrintOutCRFs("f14-10.txt", Fmin, Fmax, Fstep, CRmin, CRmax, CRstep, runs, ind, D, individuals, ffe, ff, boundary, ffo, fal);
 
@@ -434,6 +464,8 @@ public class ResultComputing {
        ffo = ff.getOptimum(D);
        fal = ff.getFal(ffe);
        boundary = ff.getBoundary();
+              ff.init(10);
+
 
        ResultComputing.computeAndPrintOutCRFs("f15-10.txt", Fmin, Fmax, Fstep, CRmin, CRmax, CRstep, runs, ind, D, individuals, ffe, ff, boundary, ffo, fal);
 
