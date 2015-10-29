@@ -4,9 +4,15 @@ import cz.wikkiw.fitnessfunctions.Ackley;
 import cz.wikkiw.fitnessfunctions.FitnessFunction;
 import cz.wikkiw.fitnessfunctions.objects.Boundary;
 import cz.wikkiw.fitnessfunctions.objects.Individual;
+import cz.wikkiw.sink.Sink;
+import cz.wikkiw.sink.SinkKeysEnum;
+import cz.wikkiw.sink.WolframSink;
+import cz.wikkiw.sinkworker.Worker;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.TreeMap;
 
 /**
  *
@@ -24,10 +30,11 @@ public class DErand1bin {
     final private Boundary boundaryRange;
     final private double ffOptimum;
     final private double fixedAccuracyLevel;
-
+    
     private int evaluations;
     private boolean success;
-
+    private Sink sink;
+    
     /**
      *
      * @param bestIndividual
@@ -40,8 +47,9 @@ public class DErand1bin {
      * @param boundaryRange
      * @param ffOptimum
      * @param fixedAccuracyLevel
+     * @param sink
      */
-    public DErand1bin(Individual bestIndividual, int dimension, int individualCount, double crossoverProbability, double F, int maxFFE, FitnessFunction ffunction, Boundary boundaryRange, double ffOptimum, double fixedAccuracyLevel) {
+    public DErand1bin(Individual bestIndividual, int dimension, int individualCount, double crossoverProbability, double F, int maxFFE, FitnessFunction ffunction, Boundary boundaryRange, double ffOptimum, double fixedAccuracyLevel, Sink sink) {
         this.bestIndividual = bestIndividual;
         this.dimension = dimension;
         this.individualCount = individualCount;
@@ -52,6 +60,7 @@ public class DErand1bin {
         this.boundaryRange = boundaryRange;
         this.ffOptimum = ffOptimum;
         this.fixedAccuracyLevel = fixedAccuracyLevel;
+        this.sink = sink;
 
         this.evaluations = 0;
         this.success = false;
@@ -59,10 +68,7 @@ public class DErand1bin {
 
     public boolean run() {
         
-        if (this.successTask()) {
-//            System.out.println("Best individual from PRWm is sufficient");
-            return true;
-        }
+        this.successTask();
 
         List<Individual> curGeneration = new ArrayList<>();
         curGeneration.add(this.bestIndividual);
@@ -77,15 +83,14 @@ public class DErand1bin {
 
             features = this.generateFeatures();
             ind = new Individual(features, this.ffunction.getValue(features));
+
             curGeneration.add(ind);
             this.evaluations++;
+            
+            this.sendToSink(0, this.evaluations, ind);
+            
             if (this.isBestIndividual(ind)) {
-
-                if (this.successTask()) {
-//                    System.out.println("Successful run.");
-                    return true;
-                }
-
+                this.successTask();
             }
 
             if (this.evaluations == this.maxFFE) {
@@ -104,10 +109,12 @@ public class DErand1bin {
         double[] trialFeatures;
         Individual trial;
         int R;
+        int gen = 0;
         
         
         while(true){
             
+            gen++;
             newGeneration = new ArrayList<>();
             
             for(Individual cur : curGeneration){
@@ -133,20 +140,20 @@ public class DErand1bin {
                 trial = new Individual(trialFeatures, this.ffunction.getValue(trialFeatures));
                 
                 this.evaluations++;
+
                 if(trial.getFitness() <= cur.getFitness()){
                     newGeneration.add(trial);
+                    this.sendToSink(gen, this.evaluations, trial);
                     
                     if (this.isBestIndividual(trial)) {
 
-                        if (this.successTask()) {
-//                            System.out.println("Successful run.");
-                            return true;
-                        }
+                        this.successTask();
 
                     }
                     
                 } else {
                     newGeneration.add(cur);
+                    this.sendToSink(gen, this.evaluations, cur);
                 }
                 
 
@@ -164,6 +171,23 @@ public class DErand1bin {
 
     }
 
+    /**
+     * 
+     * @param generation
+     * @param cfe
+     * @param ind 
+     */
+    private void sendToSink(int gen, int cfe, Individual ind){
+        
+        TreeMap<SinkKeysEnum, Object> record = new TreeMap<>();
+        record.put(SinkKeysEnum.GENERATION, gen);
+        record.put(SinkKeysEnum.CFE, cfe);
+        record.put(SinkKeysEnum.INDIVIDUAL, ind);
+        
+        this.sink.addRecord(record);
+        
+    }
+    
     /**
      * 
      * @param min
@@ -301,6 +325,14 @@ public class DErand1bin {
         this.success = success;
     }
 
+    public Sink getSink() {
+        return sink;
+    }
+
+    public void setSink(Sink sink) {
+        this.sink = sink;
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -310,29 +342,45 @@ public class DErand1bin {
         FitnessFunction ff = new Ackley();
         double[] features = {1,1,1,1,1,1,1,1,1,1};
         
-        System.out.println(ff.getValue(features));
+//        System.out.println(ff.getValue(features));
         
         Individual ind = new Individual(features, ff.getValue(features));
         int D = 10;
         int individuals = 10*D;
-        double crossover = 0.3;
-        double F = 0.1;
-        int ffe = 10000*D;
+        double crossover = 0.5;
+        double F = 0.2;
+//        int ffe = 10000*D - (D*1000);
+        int ffe = 5000;
         double ffo = ff.getOptimum(D);
         double fal = ff.getFal(ffe);
+        
+        TreeMap<SinkKeysEnum, Object> desc = new TreeMap<>();
+        desc.put(SinkKeysEnum.ALGORITHM,"DErand1bin");
+        desc.put(SinkKeysEnum.DIMENSION,D);
+        desc.put(SinkKeysEnum.POPSIZE,individuals);
+        desc.put(SinkKeysEnum.CR,crossover);
+        desc.put(SinkKeysEnum.F,F);
+        desc.put(SinkKeysEnum.CFE_MAX,ffe);
+        desc.put(SinkKeysEnum.FAL,fal);
+        desc.put(SinkKeysEnum.FITNESS_FUNCTION, ff.getName());
+        
+        Sink sink;
+        Sink[] sinks = new Sink[10];
         
         DErand1bin de;
 
         int sum = 0;
         
-        for(int i=0; i<30; i++){
-            de = new DErand1bin(ind, D, individuals, crossover, F, ffe, ff, ff.getBoundary(), ffo, fal);
+        for(int i=0; i<10; i++){
+            sink = new WolframSink(desc);
+            de = new DErand1bin(ind, D, individuals, crossover, F, ffe, ff, ff.getBoundary(), ffo, fal, sink);
             de.run();
-            sum += de.getEvaluations();
-            System.out.println(de.getEvaluations());
+            sinks[i] = de.getSink();
         }
         
-        System.out.println(sum/30.0);
+        System.out.println(Arrays.toString(Worker.getBestValues(sinks)));
+        
+//        System.out.println(sum/20.0);
         
 //        System.out.println("Success: " + de.run());
 //        System.out.println("Best: " + de.getBestIndividual());
